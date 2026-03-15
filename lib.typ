@@ -119,6 +119,7 @@
 
 #let 履歴書を描画 = (
   個人情報,
+  証明写真: "",
   履歴エントリ,
   志望動機,
   本人希望,
@@ -143,18 +144,21 @@
         grid(
           columns: (1fr, auto),
           align: bottom,
-          text(size: 20pt, weight: "bold", タイトル),
-          datetime.today().display("[year]年[month]月[day]日 現在"),
+          text(size: 20pt, weight: "bold", タイトル), datetime.today().display("[year]年[month]月[day]日 現在"),
         ),
         名前セクション(個人情報, 小行高さ),
       ),
       place(dy: -3mm)[
-        #rect(
-          height: 4cm,
-          width: 3cm,
-          stroke: 1pt,
-          align(center + horizon)[写真],
-        )
+        #if 証明写真 != "" {
+          image("icon.png")
+        } else {
+          rect(
+            height: 4cm,
+            width: 3cm,
+            stroke: 1pt,
+            align(center + horizon)[写真],
+          )
+        }
       ],
     ),
     住所セクション(個人情報, 小行高さ),
