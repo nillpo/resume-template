@@ -150,7 +150,7 @@
       ),
       place(dy: -3mm)[
         #if 証明写真 != "" {
-          image("icon.png")
+          image(証明写真)
         } else {
           rect(
             height: 4cm,
